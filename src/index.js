@@ -23,8 +23,10 @@ window.loadData = function (json) {
   // console.log(myKeys);
   // console.log(data[0].fieldData);
   // console.log(data[0].fieldData.City);
-  const myNewArray = data.forEach(function (item,index,data) {
-    console.log([
+
+  var myNewArray = [];
+  data.forEach(function (item,index,data) {
+    myNewArray.push([
       [data[index].fieldData.City],
       [data[index].fieldData.CompanyName],
       [data[index].fieldData.Id],
@@ -33,6 +35,7 @@ window.loadData = function (json) {
       [data[index].fieldData.StreetAddress],
       [data[index].fieldData.Zip],
     ]);
+    return myNewArray;
   });
   console.log(myNewArray);
   const myArray =       [[
@@ -86,7 +89,7 @@ window.loadData = function (json) {
       // { title: "StreetAddress" },
       // { title: "Zip" },
     ],
-    data: myArray,
+    data: myNewArray,
     // [
     //   [
     //     [data[0].fieldData.City],
