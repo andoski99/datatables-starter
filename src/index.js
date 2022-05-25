@@ -1,13 +1,12 @@
-//Here we're importing items we'll need. You can add other imports here.
 
 var table;
 
 // exposing loadData to FileMaker Script
 window.loadData = function (json) {
   const obj = JSON.parse(json);
-  console.log(obj);
+  // console.log(obj);
   const data = obj.data;
-  console.log(data);
+  // console.log(data);
   //TODO: Load the DataTables libraries by linking to the DataTables CDN.
   //TODO: Get data from FileMaker
   //TODO: prep it for the JS.
@@ -21,9 +20,50 @@ window.loadData = function (json) {
   // Variables for the column definitions
 
   const myKeys = Object.keys(data[0].fieldData);
-  console.log(myKeys);
-  console.log(data[0].fieldData);
-  console.log(data[0].fieldData.City);
+  // console.log(myKeys);
+  // console.log(data[0].fieldData);
+  // console.log(data[0].fieldData.City);
+  const myNewArray = data.forEach(function (item,index,data) {
+    console.log([
+      [data[index].fieldData.City],
+      [data[index].fieldData.CompanyName],
+      [data[index].fieldData.Id],
+      [data[index].fieldData.ModifiedTimeStamp],
+      [data[index].fieldData.State],
+      [data[index].fieldData.StreetAddress],
+      [data[index].fieldData.Zip],
+    ]);
+  });
+  console.log(myNewArray);
+  const myArray =       [[
+        [data[0].fieldData.City],
+        [data[0].fieldData.CompanyName],
+        [data[0].fieldData.Id],
+        [data[0].fieldData.ModifiedTimeStamp],
+        [data[0].fieldData.State],
+        [data[0].fieldData.StreetAddress],
+        [data[0].fieldData.Zip],
+      ],
+      [
+        [data[1].fieldData.City],
+        [data[1].fieldData.CompanyName],
+        [data[1].fieldData.Id],
+        [data[1].fieldData.ModifiedTimeStamp],
+        [data[1].fieldData.State],
+        [data[1].fieldData.StreetAddress],
+        [data[1].fieldData.Zip],
+      ],
+      [
+        [data[2].fieldData.City],
+        [data[2].fieldData.CompanyName],
+        [data[2].fieldData.Id],
+        [data[2].fieldData.ModifiedTimeStamp],
+        [data[2].fieldData.State],
+        [data[2].fieldData.StreetAddress],
+        [data[2].fieldData.Zip]
+      ]];
+
+  console.log(myArray);
 
   table = $("#dtable").DataTable({
     paging: true,
@@ -31,6 +71,7 @@ window.loadData = function (json) {
     searching: true,
     colReorder: true,
     columns: [
+      { title: myKeys[0] },
       { title: myKeys[1] },
       { title: myKeys[2] },
       { title: myKeys[3] },
@@ -44,10 +85,38 @@ window.loadData = function (json) {
       // { title: "State" },
       // { title: "StreetAddress" },
       // { title: "Zip" },
-      // { title: "Last Name", data: "lastName" },
-      // { title: "Years Young", data: "age", width: "10%" },
     ],
-    data: [data[0].fieldData],
+    data: myArray,
+    // [
+    //   [
+    //     [data[0].fieldData.City],
+    //     [data[0].fieldData.CompanyName],
+    //     [data[0].fieldData.Id],
+    //     [data[0].fieldData.ModifiedTimeStamp],
+    //     [data[0].fieldData.State],
+    //     [data[0].fieldData.StreetAddress],
+    //     [data[0].fieldData.Zip],
+    //   ],
+    //   [
+    //     [data[1].fieldData.City],
+    //     [data[1].fieldData.CompanyName],
+    //     [data[1].fieldData.Id],
+    //     [data[1].fieldData.ModifiedTimeStamp],
+    //     [data[1].fieldData.State],
+    //     [data[1].fieldData.StreetAddress],
+    //     [data[1].fieldData.Zip],
+    //   ],
+    //   [
+    //     [data[2].fieldData.City],
+    //     [data[2].fieldData.CompanyName],
+    //     [data[2].fieldData.Id],
+    //     [data[2].fieldData.ModifiedTimeStamp],
+    //     [data[2].fieldData.State],
+    //     [data[2].fieldData.StreetAddress],
+    //     [data[2].fieldData.Zip],
+    //   ],
+    //   // [["Tamworth"],["Tamworth"], ["Tamworth"]],
+    // ],
     // data: [
     //   {firstName: "John", lastName: "Brown", age: 62},
     //   {firstName: "Jane", lastName: "Doe", age: 58}
@@ -55,54 +124,8 @@ window.loadData = function (json) {
   });
 };
 
-// import { companiesData } from "./companies-data";
 
-// //TODO: Get and array of the unique states.
-// const states = companiesData.map((company) => company.fieldData.State);
-// // console.log(states);
-
-// const findUnique = (value, index, self) => {
-//   return self.indexOf(value) === index;
-// };
-// const uniqueStates = states.filter(findUnique).sort();
-// // console.log(uniqueStates); 
-
-// //TODO: Get each state in its own card/div (Parent element for each state
-// const createParent = (state) => {
-//   const parent = document.createElement("div");
-//   parent.className = "col-4 p-1 ";
-//   parent.innerHTML = `<h2> ${state} </h2>`;
-// return parent;
-// }
-// //TODO: Show the state in each parent element title
-
-
-// //TODO: get data (company) for each state
-
-// //TODO: create button for each company
-// const createButton = (company) => {
-//   const btn = document.createElement("button");
-//   btn.type = "button";
-//   btn.innerHTML = company;
-//   btn.className = "col-12 p-2 m-1 btn btn-primary";
-//   return btn;
-//   // after.appendChild(btn);
-// };// after.appendChild(btn);
-
-// //TODO: append button to each parent element
-
-// //TODO: append the parent element to the after div
-
-// // const filterFunction = (company,state) => company.fieldData.State === state;
-// const filterForState = (array, state) => {
-//   console.log(array);
-//   console.log(state);
-//   return array.filter((company) => company.fieldData.State === state);
-// }
-// const checkThis = filterForState(companiesData, "TX");
-// console.log(checkThis);
-
-// //Ultimate Function
+//Ultimate Function
 // uniqueStates.forEach((state) => {
 //   const stateData = filterForState(companiesData, state);
 //   const parentElement = createParent(state);
