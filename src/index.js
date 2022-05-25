@@ -127,20 +127,3 @@ window.loadData = function (json) {
   });
 };
 
-
-//Ultimate Function
-// uniqueStates.forEach((state) => {
-//   const stateData = filterForState(companiesData, state);
-//   const parentElement = createParent(state);
-// //TODO: append button to each parent element
-//   stateData.forEach((company) => {
-//     const CompanyName = company.fieldData.CompanyName;
-//     const btn = createButton(CompanyName);
-//     parentElement.appendChild(btn);
-//   });
-//   //TODO: append the parent element to the after div
-//   console.log(stateData);
-//   after.appendChild(parentElement);
-// });
-
-
