@@ -1,4 +1,3 @@
-
 var table;
 
 // exposing loadData to FileMaker Script
@@ -25,7 +24,7 @@ window.loadData = function (json) {
   // console.log(data[0].fieldData.City);
 
   var myNewArray = [];
-  data.forEach(function (item,index,data) {
+  data.forEach(function (item, index, data) {
     myNewArray.push([
       [data[index].fieldData.City],
       [data[index].fieldData.CompanyName],
@@ -38,33 +37,35 @@ window.loadData = function (json) {
     return myNewArray;
   });
   console.log(myNewArray);
-  const myArray =       [[
-        [data[0].fieldData.City],
-        [data[0].fieldData.CompanyName],
-        [data[0].fieldData.Id],
-        [data[0].fieldData.ModifiedTimeStamp],
-        [data[0].fieldData.State],
-        [data[0].fieldData.StreetAddress],
-        [data[0].fieldData.Zip],
-      ],
-      [
-        [data[1].fieldData.City],
-        [data[1].fieldData.CompanyName],
-        [data[1].fieldData.Id],
-        [data[1].fieldData.ModifiedTimeStamp],
-        [data[1].fieldData.State],
-        [data[1].fieldData.StreetAddress],
-        [data[1].fieldData.Zip],
-      ],
-      [
-        [data[2].fieldData.City],
-        [data[2].fieldData.CompanyName],
-        [data[2].fieldData.Id],
-        [data[2].fieldData.ModifiedTimeStamp],
-        [data[2].fieldData.State],
-        [data[2].fieldData.StreetAddress],
-        [data[2].fieldData.Zip]
-      ]];
+  const myArray = [
+    [
+      [data[0].fieldData.City],
+      [data[0].fieldData.CompanyName],
+      [data[0].fieldData.Id],
+      [data[0].fieldData.ModifiedTimeStamp],
+      [data[0].fieldData.State],
+      [data[0].fieldData.StreetAddress],
+      [data[0].fieldData.Zip],
+    ],
+    [
+      [data[1].fieldData.City],
+      [data[1].fieldData.CompanyName],
+      [data[1].fieldData.Id],
+      [data[1].fieldData.ModifiedTimeStamp],
+      [data[1].fieldData.State],
+      [data[1].fieldData.StreetAddress],
+      [data[1].fieldData.Zip],
+    ],
+    [
+      [data[2].fieldData.City],
+      [data[2].fieldData.CompanyName],
+      [data[2].fieldData.Id],
+      [data[2].fieldData.ModifiedTimeStamp],
+      [data[2].fieldData.State],
+      [data[2].fieldData.StreetAddress],
+      [data[2].fieldData.Zip],
+    ],
+  ];
 
   console.log(myArray);
 
@@ -73,18 +74,23 @@ window.loadData = function (json) {
     pageLength: 20,
     searching: true,
     colReorder: true,
-    columns:
-[
-      {
-        title: "Company",
-        data: "fieldData.CompanyName",
-        searchable: false,
-      },
-      { title: "ADDRESS", data: "fieldData.StreetAddress", orderable: false },
-      { title: "State", data: "fieldData.State", orderable: false },
-      { title: "Zip", data: "fieldData.Zip", orderable: false },
+    columns: [
+      { title: myKeys[0] },
+      { title: myKeys[1] },
+      { title: myKeys[2] },
+      { title: myKeys[3] },
+      { title: myKeys[4] },
+      { title: myKeys[5] },
+      { title: myKeys[6] },
+      // { title: "City" },
+      // { title: "CompanyName" },
+      // { title: "Id" },
+      // { title: "ModifiedTimeStamp" },
+      // { title: "State" },
+      // { title: "StreetAddress" },
+      // { title: "Zip" },
     ],
-    data: data,
+    data: myNewArray,
     // [
     //   [
     //     [data[0].fieldData.City],
@@ -121,4 +127,3 @@ window.loadData = function (json) {
     // ],
   });
 };
-
