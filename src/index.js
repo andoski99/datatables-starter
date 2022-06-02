@@ -1,5 +1,3 @@
-
-
 let table;
 
 import { admissionColumns } from "./columns";
@@ -30,8 +28,3 @@ $("#dtable").on("click","tbody tr", function() {
   console.log(data);
 })
 
-$("#dtable").on("click", "tbody tr", function () {
-  console.log("clicked");
-  const data = table.row(this).data();
-  console.log(data);
-});
