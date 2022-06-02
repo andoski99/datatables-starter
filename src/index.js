@@ -1,5 +1,6 @@
 
-var table;
+
+let table;
 
 import { admissionColumns } from "./columns";
 import { customerColumns} from "./columns";
@@ -69,9 +70,14 @@ window.loadData = function (json) {
     searching: true,
     colReorder: true,
     columns: columns,
-
     data: data,
 
   });
 };
+
+$("#dtable").on("click","tbody tr", function() {
+  console.log("clicked");
+  const data = table.row(this).data();
+  console.log(data);
+})
 
