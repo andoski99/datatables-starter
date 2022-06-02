@@ -25,6 +25,7 @@ window.loadData = function (json) {
 $("#dtable").on("click","tbody tr", function() {
   console.log("clicked");
   const data = table.row(this).data();
-  console.log(data);
+  Filemaker.performscript(JSON.stringify(data),);
+  // console.log(data);
 })
 
