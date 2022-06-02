@@ -5,3 +5,26 @@ body {
   padding-left: 10px;
   padding-right: 10px;
 }
+.table{
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+
+  border: 1px solid #ddd;
+  color: #159A9C;
+  font-size: 11px;
+  box-shadow: 5px 10px #888888;
+}
+
+
+.table th{
+  background-color: #159A9C;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+table tbody tr:hover{
+
+  cursor: pointer;
+}
